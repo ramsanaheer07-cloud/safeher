@@ -1,0 +1,219 @@
+type Value = 
+ variant {
+   "bool": bool;
+   float: float64;
+   "int": int;
+   "nat": nat;
+   "null";
+   "text": text;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type TimerStatus = 
+ variant {
+   active;
+   stopped;
+ };
+type SosAlertStatus = variant {alerted;};
+type SosAlertId = nat;
+type SosAlert = 
+ record {
+   alertedContacts: vec ContactId;
+   id: SosAlertId;
+   location: Location;
+   status: SosAlertStatus;
+   timestamp: int;
+ };
+type SafetyTimer = 
+ record {
+   durationSec: nat;
+   lastCheckInAtNs: int;
+   startedAtNs: int;
+   status: TimerStatus;
+ };
+type Result__1 = 
+ variant {
+   err: Error;
+   ok;
+ };
+type Result = 
+ record {
+   hasMore: bool;
+   rows: vec vec Cell;
+ };
+type Relationship = 
+ variant {
+   colleague;
+   family;
+   friend;
+   other;
+ };
+type Principal = principal;
+type MessageKind = 
+ variant {
+   image;
+   location;
+   "text";
+ };
+type MessageId = nat;
+type LocationSnapshot = 
+ record {
+   accuracyM: opt float64;
+   capturedAtNs: int;
+   latitude: float64;
+   longitude: float64;
+ };
+type Location = 
+ record {
+   latitude: float64;
+   longitude: float64;
+ };
+type FakeCall = 
+ record {
+   active: bool;
+   startedAt: int;
+ };
+type Error = 
+ variant {
+   AmbiguousAttribute: record {
+                         field: text;
+                         sources: vec text;
+                       };
+   FrontendOriginMismatch: record {
+                             expected: vec text;
+                             got: text;
+                           };
+   FrontendOriginsNotConfigured;
+   MalformedCandid;
+   MissingField: text;
+   MixedSsoSources: record {
+                      otherKeys: vec text;
+                      ssoKeys: vec text;
+                    };
+   NoAttributes;
+   Stale: record {ageNs: nat;};
+   UnknownNonce;
+   UntrustedSsoSource: record {domain: text;};
+ };
+type ContactId = nat;
+type Contact = 
+ record {
+   id: ContactId;
+   name: text;
+   phone: text;
+   "principal": opt Principal;
+   relationship: Relationship;
+ };
+type CheckInReminderStatus = 
+ record {
+   enabled: bool;
+   intervalSec: nat;
+   lastSentAt: int;
+   overdue: bool;
+   overdueSince: int;
+ };
+type CheckInReminder = 
+ record {
+   enabled: bool;
+   intervalSec: nat;
+   lastSentAt: int;
+ };
+type CheckInKind = 
+ variant {
+   checkIn;
+   checkOut;
+ };
+type CheckInEvent = 
+ record {
+   id: nat;
+   kind: CheckInKind;
+   location: LocationSnapshot;
+   timestamp: int;
+ };
+type ChatType = 
+ variant {
+   community;
+   direct;
+   support;
+ };
+type ChatMessage = 
+ record {
+   id: MessageId;
+   imageUrl: opt text;
+   kind: MessageKind;
+   location: opt Location;
+   sender: principal;
+   "text": opt text;
+   timestamp: int;
+ };
+type ChatId = nat;
+type Chat = 
+ record {
+   chatType: ChatType;
+   createdAt: int;
+   id: ChatId;
+   participant: opt principal;
+ };
+type Cell = 
+ record {
+   name: text;
+   value: Value;
+ };
+type ActiveCheckIn = 
+ record {
+   checkedInAtNs: int;
+   location: LocationSnapshot;
+ };
+service : {
+  _initialize_access_control: () -> ();
+  _internet_identity_sign_in_finish: () -> (Result__1);
+  _internet_identity_sign_in_start: () -> (blob);
+  addContact: (name: text, phone: text, relationship: Relationship,
+   "principal": opt Principal) -> (Contact);
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  checkIn: (location: LocationSnapshot) -> (ActiveCheckIn);
+  checkInReminderStatus: () -> (opt CheckInReminderStatus) query;
+  checkOut: (location: LocationSnapshot) -> (opt CheckInEvent);
+  createDirectChat: (participant: Principal) -> (Chat);
+  execute: (qJson: text) -> (Result) query;
+  extendTimer: (extraSec: nat) -> (SafetyTimer);
+  getApiDoc: () -> (text) query;
+  getCallerUserRole: () -> (UserRole) query;
+  getChat: (chatId: ChatId) -> (opt Chat) query;
+  getCheckInHistoryFor: (user: Principal) -> (vec CheckInEvent) query;
+  getCheckInReminder: () -> (opt CheckInReminder) query;
+  getCheckInState: () -> (opt ActiveCheckIn) query;
+  getCommunityChat: () -> (Chat);
+  getDiscreetMode: () -> (bool) query;
+  getFakeCall: () -> (opt FakeCall) query;
+  getLocation: () -> (opt LocationSnapshot) query;
+  getSosAlert: (id: SosAlertId) -> (opt SosAlert) query;
+  getSupportChat: () -> (Chat);
+  getTimer: () -> (opt SafetyTimer) query;
+  isCallerAdmin: () -> (bool) query;
+  listChats: () -> (vec Chat) query;
+  listCheckInHistory: () -> (vec CheckInEvent) query;
+  listContacts: () -> (vec Contact) query;
+  listMessages: (chatId: ChatId) -> (vec ChatMessage) query;
+  listSosAlerts: () -> (vec SosAlert) query;
+  markCheckIn: () -> (opt CheckInReminder);
+  removeContact: (id: ContactId) -> (bool);
+  schema: () -> (text) query;
+  sendMessage: (chatId: ChatId, kind: MessageKind, "text": opt text,
+   imageUrl: opt text) -> (ChatMessage);
+  setCheckInReminder: (intervalSec: nat) -> (CheckInReminder);
+  setDiscreetMode: (enabled: bool) -> (bool);
+  shareLocation: (chatId: ChatId, location: Location) -> (ChatMessage);
+  startFakeCall: () -> (FakeCall);
+  startTimer: (durationSec: nat) -> (SafetyTimer);
+  stopFakeCall: () -> (opt FakeCall);
+  stopTimer: () -> (opt SafetyTimer);
+  timerCheckIn: (location: LocationSnapshot) -> (SafetyTimer);
+  triggerSos: (location: Location) -> (SosAlert);
+  updateContact: (id: ContactId, name: text, phone: text, relationship:
+   Relationship, "principal": opt Principal) -> (opt Contact);
+}

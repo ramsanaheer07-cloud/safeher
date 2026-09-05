@@ -1,0 +1,19 @@
+{
+  "overview": "SafeHer is a girl-safety app with trusted contacts, SOS alerts, a safety timer, live location sharing, chat, fake call, discreet mode, and now an interactive map with check-in/check-out.",
+  "features": [
+    "Interactive embedded map showing live location",
+    "Check-in and check-out recording location and time",
+    "Check-in history visible to trusted contacts",
+    "Trusted contacts and SOS alerts",
+    "Safety timer with live location sharing",
+    "Direct, support, and community chat",
+    "Fake call and discreet mode"
+  ],
+  "category": "safety-app",
+  "tags": [
+    "safety",
+    "location",
+    "personal-security"
+  ],
+  "last_updated": "2026-09-04T12:26:21.849Z"
+}

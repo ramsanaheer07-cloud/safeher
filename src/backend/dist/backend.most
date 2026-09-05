@@ -1,0 +1,448 @@
+// Version: 4.0.0
+type AccessControlState__172765143 =
+  {
+    var adminAssigned : Bool;
+    userRoles : Map__386906547<Principal, UserRole__196306727>
+  };
+type AccessControlState__639561620 =
+  {
+    var adminAssigned : Bool;
+    userRoles : Map__386906547<Principal, UserRole__511160753>
+  };
+type AccessControlState__669253378 =
+  {
+    var adminAssigned : Bool;
+    userRoles : Map__386906547<Principal, UserRole__811386192>
+  };
+type ActiveCheckIn__1066809919 =
+  {checkedInAtNs : Int; location : LocationSnapshot__34489122};
+type ActiveCheckIn__726418246 =
+  {checkedInAtNs : Int; location : LocationSnapshot__421050745};
+type ChatId__264344469 = Nat;
+type ChatId__316240193 = Nat;
+type ChatId__718547344 = Nat;
+type ChatMessage__532219293 =
+  {
+    id : MessageId__716113757;
+    imageUrl : ?Text;
+    kind : MessageKind__293355103;
+    location : ?Location__667165908;
+    sender : Principal;
+    text : ?Text;
+    timestamp : Int
+  };
+type ChatMessage__625672363 =
+  {
+    id : MessageId__349649617;
+    imageUrl : ?Text;
+    kind : MessageKind__958485216;
+    location : ?Location__510443140;
+    sender : Principal;
+    text : ?Text;
+    timestamp : Int
+  };
+type ChatMessage__763546250 =
+  {
+    id : MessageId__796486828;
+    imageUrl : ?Text;
+    kind : MessageKind__360849217;
+    location : ?Location__906575590;
+    sender : Principal;
+    text : ?Text;
+    timestamp : Int
+  };
+type ChatType__35865974 = {#community; #direct; #support};
+type ChatType__404233897 = {#community; #direct; #support};
+type ChatType__90501035 = {#community; #direct; #support};
+type Chat__128324080 =
+  {
+    chatType : ChatType__35865974;
+    createdAt : Int;
+    id : ChatId__316240193;
+    participant : ?Principal
+  };
+type Chat__436803657 =
+  {
+    chatType : ChatType__404233897;
+    createdAt : Int;
+    id : ChatId__264344469;
+    participant : ?Principal
+  };
+type Chat__621225599 =
+  {
+    chatType : ChatType__90501035;
+    createdAt : Int;
+    id : ChatId__718547344;
+    participant : ?Principal
+  };
+type CheckInEvent__274615819 =
+  {
+    id : Nat;
+    kind : CheckInKind__920933019;
+    location : LocationSnapshot__34489122;
+    timestamp : Int
+  };
+type CheckInEvent__391716035 =
+  {
+    id : Nat;
+    kind : CheckInKind__373542084;
+    location : LocationSnapshot__421050745;
+    timestamp : Int
+  };
+type CheckInKind__373542084 = {#checkIn; #checkOut};
+type CheckInKind__920933019 = {#checkIn; #checkOut};
+type CheckInReminder__745080104 =
+  {enabled : Bool; intervalSec : Nat; lastSentAt : Int};
+type CheckInReminder__794042519 =
+  {enabled : Bool; intervalSec : Nat; lastSentAt : Int};
+type CheckInReminder__90296610 =
+  {enabled : Bool; intervalSec : Nat; lastSentAt : Int};
+type ContactId__779271024 = Nat;
+type Contact__354566429 =
+  {
+    id : ContactId__779271024;
+    name : Text;
+    phone : Text;
+    principal : ?Principal__508659502;
+    relationship : Relationship__150325397
+  };
+type Contact__663019438 =
+  {
+    id : Nat;
+    name : Text;
+    phone : Text;
+    principal : ?Principal;
+    relationship : Relationship__647138847
+  };
+type Contact__995471941 =
+  {
+    id : Nat;
+    name : Text;
+    phone : Text;
+    relationship : Relationship__670545821
+  };
+type Data__265875254<K, V> = {var count : Nat__58649523; kvs : [var ?(K, V)]};
+type FakeCall__573994097 = {active : Bool; startedAt : Int};
+type FakeCall__974543383 = {active : Bool; startedAt : Int};
+type FakeCall__992785413 = {active : Bool; startedAt : Int};
+type Internal__161573640<K, V> =
+  {children : [var ?Node__430031793<K, V>]; data : Data__265875254<K, V>};
+type Leaf__1045638083<K, V> = {data : Data__265875254<K, V>};
+type List__1004628775<T> =
+  {
+    var blockIndex : Nat__58649523;
+    var blocks : [var [var ?T]];
+    var elementIndex : Nat__58649523
+  };
+type List__89170296<T> = List__1004628775<T>;
+type LocationSnapshot__1057918975 =
+  {
+    accuracyM : ?Float;
+    capturedAtNs : Int;
+    latitude : Float;
+    longitude : Float
+  };
+type LocationSnapshot__317154639 =
+  {
+    accuracyM : ?Float;
+    capturedAtNs : Int;
+    latitude : Float;
+    longitude : Float
+  };
+type LocationSnapshot__34489122 =
+  {
+    accuracyM : ?Float;
+    capturedAtNs : Int;
+    latitude : Float;
+    longitude : Float
+  };
+type LocationSnapshot__421050745 =
+  {
+    accuracyM : ?Float;
+    capturedAtNs : Int;
+    latitude : Float;
+    longitude : Float
+  };
+type Location__510443140 = {latitude : Float; longitude : Float};
+type Location__667165908 = {latitude : Float; longitude : Float};
+type Location__677279957 = {latitude : Float; longitude : Float};
+type Location__906575590 = {latitude : Float; longitude : Float};
+type Map__13625999<K, V> =
+  {var root : Node__430031793<K, V>; var size : Nat__58649523};
+type Map__386906547<K, V> = Map__670138087<K, V>;
+type Map__670138087<K, V> = Map__13625999<K, V>;
+type MessageId__349649617 = Nat;
+type MessageId__716113757 = Nat;
+type MessageId__796486828 = Nat;
+type MessageKind__293355103 = {#image; #location; #text};
+type MessageKind__360849217 = {#image; #location; #text};
+type MessageKind__958485216 = {#image; #location; #text};
+type Nat__58649523 = Nat__920180692;
+type Nat__920180692 = Nat;
+type NewActor__223008650 =
+  {
+    accessControlState : AccessControlState__669253378;
+    activeCheckIns : Map__386906547<Principal, ActiveCheckIn__726418246>;
+    chatState : {var nextChatId : Nat; var nextMessageId : Nat};
+    chats : Map__386906547<Principal, List__89170296<Chat__128324080>>;
+    checkInHistory :
+      Map__386906547<Principal, List__89170296<CheckInEvent__391716035>>;
+    checkInReminders : Map__386906547<Principal, CheckInReminder__794042519>;
+    checkInState : {var nextCheckInEventId : Nat};
+    contacts : Map__386906547<Principal, List__89170296<Contact__663019438>>;
+    discreetMode : Map__386906547<Principal, Bool>;
+    fakeCall : Map__386906547<Principal, FakeCall__573994097>;
+    locations : Map__386906547<Principal, LocationSnapshot__421050745>;
+    messages :
+      Map__386906547<ChatId__316240193,
+                      List__89170296<ChatMessage__763546250>>;
+    sosAlerts :
+      Map__386906547<Principal, List__89170296<SosAlert__918893232>>;
+    state : {var nextContactId : Nat; var nextSosAlertId : Nat};
+    timers : Map__386906547<Principal, SafetyTimer__171277206>
+  };
+type NewActor__720873888 =
+  {
+    accessControlState : AccessControlState__172765143;
+    contacts : Map__386906547<Principal, List__89170296<Contact__995471941>>;
+    locations : Map__386906547<Principal, LocationSnapshot__317154639>;
+    sosAlerts :
+      Map__386906547<Principal, List__89170296<SosAlert__588778037>>;
+    state : {var nextContactId : Nat; var nextSosAlertId : Nat};
+    timers : Map__386906547<Principal, SafetyTimer__62028880>
+  };
+type NewActor__838178257 =
+  {
+    accessControlState : AccessControlState__639561620;
+    chatState : {var nextChatId : Nat; var nextMessageId : Nat};
+    chats : Map__386906547<Principal, List__89170296<Chat__436803657>>;
+    checkInReminders : Map__386906547<Principal, CheckInReminder__90296610>;
+    contacts :
+      Map__386906547<Principal, List__89170296<NewContact__1007573675>>;
+    discreetMode : Map__386906547<Principal, Bool>;
+    fakeCall : Map__386906547<Principal, FakeCall__974543383>;
+    locations : Map__386906547<Principal, LocationSnapshot__1057918975>;
+    messages :
+      Map__386906547<ChatId__264344469,
+                      List__89170296<ChatMessage__625672363>>;
+    sosAlerts :
+      Map__386906547<Principal, List__89170296<SosAlert__640484128>>;
+    state : {var nextContactId : Nat; var nextSosAlertId : Nat};
+    timers : Map__386906547<Principal, SafetyTimer__861084827>
+  };
+type NewContact__1007573675 =
+  {
+    id : Nat;
+    name : Text;
+    phone : Text;
+    principal : ?Principal;
+    relationship : Relationship__379141601
+  };
+type Node__430031793<K, V> =
+  {#internal : Internal__161573640<K, V>; #leaf : Leaf__1045638083<K, V>};
+type OldActor__1050162168 =
+  {
+    accessControlState : AccessControlState__639561620;
+    contacts :
+      Map__386906547<Principal, List__89170296<OldContact__186698128>>;
+    locations : Map__386906547<Principal, LocationSnapshot__1057918975>;
+    sosAlerts :
+      Map__386906547<Principal, List__89170296<SosAlert__640484128>>;
+    state : {var nextContactId : Nat; var nextSosAlertId : Nat};
+    timers : Map__386906547<Principal, SafetyTimer__861084827>
+  };
+type OldActor__180532489 = {};
+type OldActor__321845789 =
+  {
+    accessControlState : AccessControlState__669253378;
+    chatState : {var nextChatId : Nat; var nextMessageId : Nat};
+    chats : Map__386906547<Principal, List__89170296<Chat__128324080>>;
+    checkInReminders : Map__386906547<Principal, CheckInReminder__794042519>;
+    contacts : Map__386906547<Principal, List__89170296<Contact__663019438>>;
+    discreetMode : Map__386906547<Principal, Bool>;
+    fakeCall : Map__386906547<Principal, FakeCall__573994097>;
+    locations : Map__386906547<Principal, LocationSnapshot__421050745>;
+    messages :
+      Map__386906547<ChatId__316240193,
+                      List__89170296<ChatMessage__763546250>>;
+    sosAlerts :
+      Map__386906547<Principal, List__89170296<SosAlert__918893232>>;
+    state : {var nextContactId : Nat; var nextSosAlertId : Nat};
+    timers : Map__386906547<Principal, SafetyTimer__171277206>
+  };
+type OldContact__186698128 =
+  {
+    id : Nat;
+    name : Text;
+    phone : Text;
+    relationship : Relationship__379141601
+  };
+type Principal__224692764 = Principal;
+type Principal__508659502 = Principal__224692764;
+type Relationship__150325397 = {#colleague; #family; #friend; #other};
+type Relationship__379141601 = {#colleague; #family; #friend; #other};
+type Relationship__647138847 = {#colleague; #family; #friend; #other};
+type Relationship__670545821 = {#colleague; #family; #friend; #other};
+type SafetyTimer__171277206 =
+  {
+    durationSec : Nat;
+    lastCheckInAtNs : Int;
+    startedAtNs : Int;
+    status : TimerStatus__401560430
+  };
+type SafetyTimer__62028880 =
+  {
+    durationSec : Nat;
+    lastCheckInAtNs : Int;
+    startedAtNs : Int;
+    status : TimerStatus__995804894
+  };
+type SafetyTimer__631694467 =
+  {
+    durationSec : Nat;
+    lastCheckInAtNs : Int;
+    startedAtNs : Int;
+    status : TimerStatus__318008620
+  };
+type SafetyTimer__861084827 =
+  {
+    durationSec : Nat;
+    lastCheckInAtNs : Int;
+    startedAtNs : Int;
+    status : TimerStatus__938472526
+  };
+type SosAlertId__195260982 = Nat;
+type SosAlertStatus__1002752288 = {#alerted};
+type SosAlertStatus__328596714 = {#alerted};
+type SosAlertStatus__444348950 = {#alerted};
+type SosAlertStatus__871940020 = {#alerted};
+type SosAlert__217572421 =
+  {
+    alertedContacts : [ContactId__779271024];
+    id : SosAlertId__195260982;
+    location : Location__667165908;
+    status : SosAlertStatus__328596714;
+    timestamp : Int
+  };
+type SosAlert__588778037 =
+  {
+    alertedContacts : [Nat];
+    id : Nat;
+    location : Location__677279957;
+    status : SosAlertStatus__1002752288;
+    timestamp : Int
+  };
+type SosAlert__640484128 =
+  {
+    alertedContacts : [Nat];
+    id : Nat;
+    location : Location__510443140;
+    status : SosAlertStatus__871940020;
+    timestamp : Int
+  };
+type SosAlert__918893232 =
+  {
+    alertedContacts : [Nat];
+    id : Nat;
+    location : Location__906575590;
+    status : SosAlertStatus__444348950;
+    timestamp : Int
+  };
+type TimerStatus__318008620 = {#active; #stopped};
+type TimerStatus__401560430 = {#active; #stopped};
+type TimerStatus__938472526 = {#active; #stopped};
+type TimerStatus__995804894 = {#active; #stopped};
+type UserRole__196306727 = {#admin; #guest; #user};
+type UserRole__511160753 = {#admin; #guest; #user};
+type UserRole__811386192 = {#admin; #guest; #user};
+type UserRole__91647283 = {#admin; #guest; #user};
+{
+  "20260904_000000" : (_old : OldActor__180532489) -> NewActor__720873888;
+  "20260904_010000" : (old : OldActor__1050162168) -> NewActor__838178257;
+  "20260904_020000" : (old : OldActor__321845789) -> NewActor__223008650
+}
+actor  {
+  stable accessControlState :
+    {
+      var adminAssigned : Bool;
+      userRoles : Map__386906547<Principal, UserRole__91647283>
+    };
+  stable activeCheckIns :
+    {
+      var root :
+        Node__430031793<Principal__508659502, ActiveCheckIn__1066809919>;
+      var size : Nat__58649523
+    };
+  stable chatState :
+    {
+      var nextChatId : ChatId__718547344;
+      var nextMessageId : MessageId__716113757
+    };
+  stable chats :
+    {
+      var root :
+        Node__430031793<Principal__508659502, List__89170296<Chat__621225599>>;
+      var size : Nat__58649523
+    };
+  stable checkInHistory :
+    {
+      var root :
+        Node__430031793<Principal__508659502,
+                         List__89170296<CheckInEvent__274615819>>;
+      var size : Nat__58649523
+    };
+  stable checkInReminders :
+    {
+      var root :
+        Node__430031793<Principal__508659502, CheckInReminder__745080104>;
+      var size : Nat__58649523
+    };
+  stable checkInState : {var nextCheckInEventId : Nat};
+  stable contacts :
+    {
+      var root :
+        Node__430031793<Principal__508659502,
+                         List__89170296<Contact__354566429>>;
+      var size : Nat__58649523
+    };
+  stable discreetMode :
+    {
+      var root : Node__430031793<Principal__508659502, Bool>;
+      var size : Nat__58649523
+    };
+  stable fakeCall :
+    {
+      var root : Node__430031793<Principal__508659502, FakeCall__992785413>;
+      var size : Nat__58649523
+    };
+  stable locations :
+    {
+      var root :
+        Node__430031793<Principal__508659502, LocationSnapshot__34489122>;
+      var size : Nat__58649523
+    };
+  stable messages :
+    {
+      var root :
+        Node__430031793<ChatId__718547344,
+                         List__89170296<ChatMessage__532219293>>;
+      var size : Nat__58649523
+    };
+  stable sosAlerts :
+    {
+      var root :
+        Node__430031793<Principal__508659502,
+                         List__89170296<SosAlert__217572421>>;
+      var size : Nat__58649523
+    };
+  stable state :
+    {
+      var nextContactId : ContactId__779271024;
+      var nextSosAlertId : SosAlertId__195260982
+    };
+  stable timers :
+    {
+      var root : Node__430031793<Principal__508659502, SafetyTimer__631694467>;
+      var size : Nat__58649523
+    }
+};

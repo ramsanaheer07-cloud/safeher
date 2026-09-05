@@ -1,0 +1,377 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans.woff2") format("woff2");
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --font-display: "Space Grotesk", sans-serif;
+    --font-body: "Plus Jakarta Sans", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+    --radius: 0.75rem;
+
+    --background: 0.975 0.012 300;
+    --foreground: 0.2 0.03 310;
+    --card: 0.99 0.008 300;
+    --card-foreground: 0.2 0.03 310;
+    --popover: 0.99 0.008 300;
+    --popover-foreground: 0.2 0.03 310;
+
+    --primary: 0.48 0.13 320;
+    --primary-foreground: 0.98 0.005 320;
+
+    --secondary: 0.94 0.02 300;
+    --secondary-foreground: 0.3 0.03 310;
+    --muted: 0.94 0.02 300;
+    --muted-foreground: 0.5 0.02 305;
+
+    --accent: 0.6 0.16 25;
+    --accent-foreground: 0.98 0.005 25;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0.005 25;
+
+    --success: 0.55 0.15 150;
+    --warning: 0.7 0.15 85;
+
+    --border: 0.9 0.015 300;
+    --input: 0.9 0.015 300;
+    --ring: 0.48 0.13 320;
+
+    --chat-incoming: 0.94 0.025 300;
+    --chat-incoming-foreground: 0.22 0.03 310;
+    --chat-outgoing: 0.48 0.13 320;
+    --chat-outgoing-foreground: 0.98 0.005 320;
+    --chat-anon: 0.88 0.06 300;
+    --chat-anon-foreground: 0.25 0.03 310;
+    --location: 0.55 0.13 170;
+    --location-foreground: 0.98 0.005 170;
+    --location-soft: 0.93 0.03 170;
+    --location-soft-foreground: 0.32 0.05 170;
+    --location-ring: 0.55 0.13 170;
+    --discreet: 0.72 0.01 300;
+    --discreet-foreground: 0.3 0.02 310;
+
+    --chart-1: 0.48 0.13 320;
+    --chart-2: 0.6 0.16 25;
+    --chart-3: 0.55 0.15 150;
+    --chart-4: 0.72 0.12 320;
+    --chart-5: 0.5 0.02 305;
+
+    --sidebar: 0.99 0.008 300;
+    --sidebar-foreground: 0.2 0.03 310;
+    --sidebar-primary: 0.48 0.13 320;
+    --sidebar-primary-foreground: 0.98 0.005 320;
+    --sidebar-accent: 0.94 0.02 300;
+    --sidebar-accent-foreground: 0.3 0.03 310;
+    --sidebar-border: 0.9 0.015 300;
+    --sidebar-ring: 0.48 0.13 320;
+  }
+
+  .dark {
+    --background: 0.16 0.02 300;
+    --foreground: 0.93 0.01 300;
+    --card: 0.2 0.025 300;
+    --card-foreground: 0.93 0.01 300;
+    --popover: 0.2 0.025 300;
+    --popover-foreground: 0.93 0.01 300;
+
+    --primary: 0.72 0.12 320;
+    --primary-foreground: 0.16 0.02 320;
+
+    --secondary: 0.24 0.025 300;
+    --secondary-foreground: 0.85 0.01 300;
+    --muted: 0.24 0.025 300;
+    --muted-foreground: 0.55 0.015 300;
+
+    --accent: 0.65 0.2 25;
+    --accent-foreground: 0.16 0.02 25;
+
+    --destructive: 0.65 0.2 25;
+    --destructive-foreground: 0.16 0.02 25;
+
+    --success: 0.65 0.16 150;
+    --warning: 0.75 0.15 85;
+
+    --border: 0.28 0.025 300;
+    --input: 0.28 0.025 300;
+    --ring: 0.72 0.12 320;
+
+    --chat-incoming: 0.26 0.03 300;
+    --chat-incoming-foreground: 0.9 0.01 300;
+    --chat-outgoing: 0.72 0.12 320;
+    --chat-outgoing-foreground: 0.16 0.02 320;
+    --chat-anon: 0.3 0.06 300;
+    --chat-anon-foreground: 0.9 0.01 300;
+    --location: 0.65 0.13 170;
+    --location-foreground: 0.16 0.02 170;
+    --location-soft: 0.2 0.04 170;
+    --location-soft-foreground: 0.85 0.05 170;
+    --location-ring: 0.65 0.13 170;
+    --discreet: 0.42 0.01 300;
+    --discreet-foreground: 0.88 0.01 300;
+
+    --chart-1: 0.72 0.12 320;
+    --chart-2: 0.65 0.2 25;
+    --chart-3: 0.65 0.16 150;
+    --chart-4: 0.8 0.1 320;
+    --chart-5: 0.55 0.015 300;
+
+    --sidebar: 0.2 0.025 300;
+    --sidebar-foreground: 0.93 0.01 300;
+    --sidebar-primary: 0.72 0.12 320;
+    --sidebar-primary-foreground: 0.16 0.02 320;
+    --sidebar-accent: 0.24 0.025 300;
+    --sidebar-accent-foreground: 0.85 0.01 300;
+    --sidebar-border: 0.28 0.025 300;
+    --sidebar-ring: 0.72 0.12 320;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .gradient-hero {
+    background-image: linear-gradient(
+      135deg,
+      oklch(var(--primary) / 0.14) 0%,
+      oklch(var(--accent) / 0.12) 100%
+    );
+  }
+
+  .gradient-sos {
+    background-image: linear-gradient(
+      135deg,
+      oklch(0.62 0.19 25) 0%,
+      oklch(0.55 0.22 25) 100%
+    );
+  }
+
+  .shadow-subtle {
+    box-shadow: 0 1px 2px 0 oklch(0.2 0.03 310 / 0.06), 0 4px 12px -2px
+      oklch(0.2 0.03 310 / 0.08);
+  }
+
+  .shadow-elevated {
+    box-shadow: 0 2px 4px 0 oklch(0.2 0.03 310 / 0.08), 0 12px 28px -6px
+      oklch(0.2 0.03 310 / 0.18);
+  }
+
+  /* Chat bubbles */
+  .chat-bubble-in {
+    background: oklch(var(--chat-incoming));
+    color: oklch(var(--chat-incoming-foreground));
+    border-radius: 1.25rem 1.25rem 1.25rem 0.375rem;
+    box-shadow: 0 1px 2px 0 oklch(0.2 0.03 310 / 0.05);
+  }
+  .chat-bubble-out {
+    background: oklch(var(--chat-outgoing));
+    color: oklch(var(--chat-outgoing-foreground));
+    border-radius: 1.25rem 1.25rem 0.375rem 1.25rem;
+    box-shadow: 0 1px 2px 0 oklch(0.2 0.03 310 / 0.06);
+  }
+  .chat-bubble-anon {
+    background: oklch(var(--chat-anon));
+    color: oklch(var(--chat-anon-foreground));
+    border-radius: 1.25rem 1.25rem 1.25rem 0.375rem;
+    border: 1px solid oklch(var(--border));
+  }
+
+  /* Message input */
+  .message-input {
+    background: oklch(var(--card));
+    border: 1px solid oklch(var(--input));
+    border-radius: 1.5rem;
+    box-shadow: 0 1px 2px 0 oklch(0.2 0.03 310 / 0.06);
+  }
+  .message-input:focus-within {
+    border-color: oklch(var(--ring) / 0.6);
+    box-shadow: 0 0 0 3px oklch(var(--ring) / 0.18);
+  }
+
+  /* Live location sharing */
+  .location-pill {
+    background: oklch(var(--location));
+    color: oklch(var(--location-foreground));
+    border-radius: 9999px;
+    box-shadow: 0 1px 2px 0 oklch(0.2 0.03 310 / 0.06);
+  }
+  .location-pin {
+    fill: oklch(var(--location));
+  }
+
+  /* Discreet mode — neutral disguise surface */
+  .discreet-surface {
+    background: oklch(var(--discreet));
+    color: oklch(var(--discreet-foreground));
+    border-radius: 0.75rem;
+  }
+
+  /* Fake call screen overlay */
+  .fake-call-overlay {
+    background-image: linear-gradient(
+      160deg,
+      oklch(0.3 0.04 300 / 0.96) 0%,
+      oklch(0.16 0.03 300 / 0.98) 100%
+    );
+  }
+
+  /* Embedded interactive map (Leaflet + OpenStreetMap) */
+  .map-container {
+    background: oklch(var(--card));
+    border: 1px solid oklch(var(--border));
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 1px 2px 0 oklch(0.2 0.03 310 / 0.06), 0 4px 12px -2px
+      oklch(0.2 0.03 310 / 0.08);
+  }
+  .map-container .leaflet-control-attribution {
+    background: oklch(var(--card) / 0.85);
+    color: oklch(var(--muted-foreground));
+    font-size: 0.625rem;
+    backdrop-filter: blur(4px);
+  }
+  .map-container .leaflet-control-attribution a {
+    color: oklch(var(--location));
+  }
+  .map-container .leaflet-control-zoom a {
+    color: oklch(var(--foreground));
+    background: oklch(var(--card));
+    border: 1px solid oklch(var(--border));
+  }
+  .map-container .leaflet-control-zoom a:hover {
+    background: oklch(var(--muted));
+  }
+
+  /* Live-location marker (location teal, accuracy ring) */
+  .map-live-marker {
+    width: 1.125rem;
+    height: 1.125rem;
+    border-radius: 9999px;
+    background: oklch(var(--location));
+    border: 2px solid oklch(var(--location-foreground));
+    box-shadow: 0 0 0 2px oklch(var(--location) / 0.35);
+  }
+  .map-live-marker::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    border: 2px solid oklch(var(--location) / 0.5);
+    animation: accuracy-pulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  .map-accuracy-ring {
+    border-radius: 9999px;
+    border: 1.5px dashed oklch(var(--location) / 0.45);
+    background: oklch(var(--location) / 0.12);
+  }
+
+  /* Center-on-me control */
+  .map-center-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 9999px;
+    background: oklch(var(--card));
+    color: oklch(var(--location));
+    border: 1px solid oklch(var(--border));
+    box-shadow: 0 2px 4px 0 oklch(0.2 0.03 310 / 0.08), 0 8px 20px -4px
+      oklch(0.2 0.03 310 / 0.16);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .map-center-btn:hover {
+    background: oklch(var(--location-soft));
+    color: oklch(var(--location-soft-foreground));
+  }
+  .map-center-btn:active {
+    transform: scale(0.94);
+  }
+
+  /* Check-in / check-out state cards */
+  .checkin-card-active {
+    background: oklch(var(--location-soft));
+    color: oklch(var(--location-soft-foreground));
+    border: 1px solid oklch(var(--location) / 0.35);
+    border-radius: 1.25rem;
+    box-shadow: 0 1px 2px 0 oklch(0.2 0.03 310 / 0.06);
+  }
+  .checkin-card-idle {
+    background: oklch(var(--card));
+    color: oklch(var(--card-foreground));
+    border: 1px solid oklch(var(--border));
+    border-radius: 1.25rem;
+    box-shadow: 0 1px 2px 0 oklch(0.2 0.03 310 / 0.06);
+  }
+  .checkin-status-dot {
+    width: 0.625rem;
+    height: 0.625rem;
+    border-radius: 9999px;
+    background: oklch(var(--location));
+    box-shadow: 0 0 0 3px oklch(var(--location) / 0.25);
+  }
+  .checkin-status-dot--idle {
+    background: oklch(var(--muted-foreground));
+    box-shadow: none;
+  }
+
+  /* Check-in / check-out history list */
+  .history-entry {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    border-radius: 1rem;
+    background: oklch(var(--card));
+    border: 1px solid oklch(var(--border));
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .history-entry:hover {
+    border-color: oklch(var(--location) / 0.45);
+    box-shadow: 0 1px 2px 0 oklch(0.2 0.03 310 / 0.06);
+  }
+  .history-entry-marker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    border-radius: 0.75rem;
+    background: oklch(var(--location-soft));
+    color: oklch(var(--location));
+  }
+  .history-entry--out .history-entry-marker {
+    background: oklch(var(--muted));
+    color: oklch(var(--muted-foreground));
+  }
+  .history-entry-link {
+    color: oklch(var(--location));
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .history-entry-link:hover {
+    text-decoration: underline;
+  }
+}
